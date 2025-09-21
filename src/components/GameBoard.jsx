@@ -6,15 +6,16 @@ const intialGameBoard = [
   [null, null, null],
 ];
 
-export default function GameBoard() {
+export default function GameBoard({ handleTurn, currentSymbol }) {
   const [gameBoard, setGameBoard] = useState(intialGameBoard);
 
   const onClickHandler = (rowIndex, colIndex) => {
     setGameBoard((prevGameBoard) => {
         const updatedGameBoard = [...prevGameBoard.map(innerArray => [...innerArray])];
-        updatedGameBoard[rowIndex][colIndex] = 'X';
+        updatedGameBoard[rowIndex][colIndex] = currentSymbol;
         return updatedGameBoard;
     })
+    handleTurn();
   }
 
   return (
