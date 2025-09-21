@@ -1,6 +1,7 @@
 import Player from "./components/Player";
 import GameBoard from "./components/GameBoard";
 import { useState } from "react";
+import Logs from "./components/Logs";
 
 function setActivePlayer(gameTurns) {
   let currentPlayer = "X";
@@ -25,8 +26,8 @@ function App() {
             col: colIndex,
           },
           player: activePlayer,
-          ...prevTurns,
         },
+        ...prevTurns,
       ];
       return updatedTurns;
     });
@@ -41,7 +42,7 @@ function App() {
         </ol>
         <GameBoard handleTurn={handleTurn} gamesTurns={gamesTurns} />
       </div>
-      LOG
+      <Logs turns={gamesTurns} />
     </main>
   );
 }
